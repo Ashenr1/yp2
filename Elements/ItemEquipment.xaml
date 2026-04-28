@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="UP02.Elements.ItemEquipment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="350" d:DesignWidth="850">
+
+    <UserControl.Resources>
+        <Style x:Key="IconButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E41613"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="InfoRowStyle" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="0,3"/>
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#0060AC"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Width" Value="120"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Background="White" Margin="10" Padding="15" CornerRadius="12">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.15"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="280"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Фото -->
+            <Border Grid.Column="0" Background="#F0F0F0" CornerRadius="10" Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Image x:Name="Photo" Stretch="Uniform"/>
+            </Border>
+
+            <!-- Основная информация -->
+            <StackPanel Grid.Column="1" Margin="15,0">
+                <TextBlock x:Name="LabelName" Text="{Binding Name}" FontWeight="Bold" FontSize="15" Foreground="#0060AC" Margin="0,0,0,10"/>
+
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="📍 Аудитория:"/>
+                    <TextBlock x:Name="LabelAudience" Text="{Binding Audience.Name}" FontSize="12" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="🔢 Инв. номер:"/>
+                    <TextBlock x:Name="LabelInventoryNumber" Text="{Binding InventoryNumber}" FontSize="12" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="💰 Стоимость:"/>
+                    <TextBlock x:Name="LabelCost" Text="{Binding Cost}" FontSize="12" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="👤 Ответственный:"/>
+                    <TextBlock Text="{Binding ResponsibleUser.FullName}" FontSize="12" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="🔄 Вр. ответственный:"/>
+                    <TextBlock Text="{Binding TempResponsibleUser.FullName}" FontSize="12" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="🏷 Статус:"/>
+                    <TextBlock x:Name="StatusLabel" Text="{Binding Status.Name}" FontSize="12" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="📱 Модель:"/>
+                    <TextBlock x:Name="ModelLabel" Text="{Binding Model.Name}" FontSize="12" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="🔧 Тип:"/>
+                    <TextBlock x:Name="TypeLabel" Text="{Binding TypeEquipment.Name}" FontSize="12" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource InfoRowStyle}">
+                    <TextBlock Style="{StaticResource LabelStyle}" Text="📝 Комментарий:"/>
+                    <TextBlock Text="{Binding Comment}" FontSize="12" Foreground="#333" TextWrapping="Wrap" MaxWidth="200"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- История -->
+            <StackPanel Grid.Column="2" Margin="10,0">
+                <TextBlock Text="📍 История перемещений" FontWeight="Bold" FontSize="12" Foreground="#0060AC" Margin="0,0,0,5"/>
+                <DataGrid x:Name="locationHistory" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False" IsReadOnly="True" MaxHeight="200" BorderBrush="#E0E0E0" BorderThickness="1" RowHeight="28">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Дата" Binding="{Binding ChageDateString}" Width="80"/>
+                        <DataGridTextColumn Header="Аудитория" Binding="{Binding Audience.Name}" Width="80"/>
+                        <DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <TextBlock Text="👤 История ответственных" FontWeight="Bold" FontSize="12" Foreground="#0060AC" Margin="0,10,0,5"/>
+                <DataGrid x:Name="responsibleUserHistory" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False" IsReadOnly="True" MaxHeight="200" BorderBrush="#E0E0E0" BorderThickness="1">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Дата" Binding="{Binding ChageDateString}" Width="80"/>
+                        <DataGridTextColumn Header="Ответственный" Binding="{Binding OldUser.FullName}" Width="100"/>
+                        <DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <!-- Кнопки -->
+            <StackPanel Grid.Column="3" VerticalAlignment="Center" Margin="10,0,0,0">
+                <Button Click="DeleteClick" Background="#9EA1A2" Style="{StaticResource IconButtonStyle}" ToolTip="Удалить">
+                    <TextBlock Text="🗑"/>
+                </Button>
+                <Button Click="UpdateClick" Background="#0060AC" Style="{StaticResource IconButtonStyle}" ToolTip="Редактировать">
+                    <TextBlock Text="✏"/>
+                </Button>
+                <Button Click="ExportAcceptanceClick" Background="#9EA1A2" Style="{StaticResource IconButtonStyle}" ToolTip="Приёмка">
+                    <TextBlock Text="📥"/>
+                </Button>
+                <Button Click="ExportTemporarilyAcceptanceClick" Background="#9EA1A2" Style="{StaticResource IconButtonStyle}" ToolTip="Временная приёмка">
+                    <TextBlock Text="🔄"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

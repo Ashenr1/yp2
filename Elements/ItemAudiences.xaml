@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="UP02.Elements.ItemAudiences"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="200" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style x:Key="IconButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E41613"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="InfoLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#0060AC"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Background="White" Margin="10" Padding="15" CornerRadius="12">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.15"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <TextBlock x:Name="Name" Text="{Binding Name}" FontWeight="Bold" FontSize="16" Foreground="#0060AC" Margin="0,0,0,5"/>
+                <TextBlock x:Name="ShortName" Text="{Binding ShortName}" FontSize="13" Foreground="#666" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" Margin="0,2">
+                    <TextBlock Text="📋 Ответственный:" FontSize="13" Foreground="#0060AC" FontWeight="SemiBold" Width="130"/>
+                    <TextBlock x:Name="ResponsibleUser" Text="{Binding ResponsibleUser.FullName}" FontSize="13" Foreground="#333"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,2">
+                    <TextBlock Text="🔄 Вр. ответственный:" FontSize="13" Foreground="#0060AC" FontWeight="SemiBold" Width="143"/>
+                    <TextBlock x:Name="TempResponsibleUser" Text="{Binding TempResponsibleUser.FullName}" FontSize="13" Foreground="#333"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                <Button Click="DeleteClick" Background="#9EA1A2" Style="{StaticResource IconButtonStyle}" ToolTip="Удалить" Margin="5,0">
+                    <TextBlock Text="🗑"/>
+                </Button>
+                <Button Click="UpdateClick" Background="#0060AC" Style="{StaticResource IconButtonStyle}" ToolTip="Редактировать" Margin="5,0">
+                    <TextBlock Text="✏"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

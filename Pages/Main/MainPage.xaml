@@ -1,0 +1,175 @@
+﻿<Page x:Class="UP02.Pages.Main.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UP02.Pages.Main"
+      mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#0060AC"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="6" 
+                                BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E41613"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#9EA1A2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BottomButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="5,10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E41613"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Page.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#9EA1A2" Offset="0.0"/>
+            <GradientStop Color="#E8E8E8" Offset="1.0"/>
+        </LinearGradientBrush>
+    </Page.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="White" Opacity="0.95">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Background="#0060AC" Height="60" CornerRadius="0,0,10,10">
+                <TextBlock Text="Управление системой" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           Foreground="White" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <ScrollViewer Grid.Row="1" 
+                          VerticalScrollBarVisibility="Auto" 
+                          HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Margin="5,10">
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="📋 Оборудование" 
+                            Click="EquipmentButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="🏛️ Аудитории" 
+                            Click="AudiencesButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="🗺️ Направления" 
+                            Click="DirectionsButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="📊 Статусы" 
+                            Click="StatusesButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="🔧 Тип оборудования" 
+                            Click="TypesEquipment_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="⚡ Расходники" 
+                            Click="ConsumablesButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="📱 Модели оборудования" 
+                            Click="EquipmentModelsButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="🔗 Расходники оборудования" 
+                            Click="EquipmentConsumablesButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="📦 Инвентаризация" 
+                            Click="InventoriesButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="🌐 Сетевые настройки" 
+                            Click="NetworkSettingsButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="💻 Программное обеспечение" 
+                            Click="SoftwareButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="👨‍💻 Разработчики ПО" 
+                            Click="SoftwareDevelopersButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="📦 Тип расходников" 
+                            Click="TypesConsumablesButton_Click"/>
+                    <Button Style="{StaticResource MenuButtonStyle}" 
+                            Content="👥 Пользователи" 
+                            Click="UsersButton_Click"/>
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Grid.Row="2" Margin="5,0,5,15">
+                <Button Style="{StaticResource BottomButtonStyle}" 
+                        Background="#0060AC" 
+                        Content="📥 Импорт данных" 
+                        Click="ImportButton_Click"/>
+                <Button Style="{StaticResource BottomButtonStyle}" 
+                        Background="#E41613" 
+                        Content="🚪 Выход из системы" 
+                        Click="Exit_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="10">
+            <Border Background="White" 
+                    CornerRadius="10" 
+                    Opacity="0.95">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" 
+                                      ShadowDepth="2" 
+                                      Opacity="0.2"/>
+                </Border.Effect>
+
+                <Grid Margin="15">
+                    <Frame x:Name="ContentFrame" 
+                           NavigationUIVisibility="Hidden"/>
+                    <StackPanel x:Name="MainContentPanel" 
+                                Visibility="Hidden"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

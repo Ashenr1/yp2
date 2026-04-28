@@ -150,7 +150,6 @@
 
                         <TextBlock Text="Телефон" Style="{StaticResource FieldLabelStyle}"/>
                         <TextBox x:Name="Phone" Style="{StaticResource TextBoxStyle}"/>
-
                         <TextBlock Text="Адрес" Style="{StaticResource FieldLabelStyle}"/>
                         <TextBox x:Name="Address" Style="{StaticResource TextBoxStyle}" Margin="0,0,0,0"/>
                     </StackPanel>

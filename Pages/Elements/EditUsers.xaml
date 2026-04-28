@@ -138,7 +138,6 @@
                             <ComboBoxItem>Преподаватель</ComboBoxItem>
                             <ComboBoxItem>Сотрудник</ComboBoxItem>
                         </ComboBox>
-
                         <TextBlock Text="Логин" Style="{StaticResource FieldLabelStyle}"/>
                         <TextBox x:Name="Login" Style="{StaticResource TextBoxStyle}"/>
 

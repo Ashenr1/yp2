@@ -109,7 +109,6 @@
             <Border.Effect>
                 <DropShadowEffect BlurRadius="15" ShadowDepth="3" Opacity="0.25"/>
             </Border.Effect>
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

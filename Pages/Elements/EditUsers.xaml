@@ -120,7 +120,6 @@
                 <Border Background="#0060AC" CornerRadius="10" Height="55" Margin="0,0,0,15">
                     <TextBlock Text="👥 Редактирование пользователя" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Border>
-
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                     <StackPanel HorizontalAlignment="Center">
                         <TextBlock Text="Фамилия" Style="{StaticResource FieldLabelStyle}"/>

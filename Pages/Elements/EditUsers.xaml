@@ -127,7 +127,6 @@
 
                         <TextBlock Text="Имя" Style="{StaticResource FieldLabelStyle}"/>
                         <TextBox x:Name="FirstName" Style="{StaticResource TextBoxStyle}"/>
-
                         <TextBlock Text="Отчество" Style="{StaticResource FieldLabelStyle}"/>
                         <TextBox x:Name="MiddleName" Style="{StaticResource TextBoxStyle}"/>
 

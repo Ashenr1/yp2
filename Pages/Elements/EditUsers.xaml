@@ -124,7 +124,6 @@
                     <StackPanel HorizontalAlignment="Center">
                         <TextBlock Text="Фамилия" Style="{StaticResource FieldLabelStyle}"/>
                         <TextBox x:Name="LastName" Style="{StaticResource TextBoxStyle}"/>
-
                         <TextBlock Text="Имя" Style="{StaticResource FieldLabelStyle}"/>
                         <TextBox x:Name="FirstName" Style="{StaticResource TextBoxStyle}"/>
                         <TextBlock Text="Отчество" Style="{StaticResource FieldLabelStyle}"/>
